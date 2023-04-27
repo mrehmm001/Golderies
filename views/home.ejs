@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Home</title>
+</head>
+<body>
+    <% if(message!=""){ %>
+        <% if(type=="accept"){ %>  
+            <div style="background-color: green" class="toast">
+                <img src="./assets/check.png" alt="check" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+
+        <% }else{ %>
+            <div style="background-color: red" class="toast">
+                <img src="./assets/exclamation-mark.png" alt="exclamation-mark" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+            
+        <% } %>  
+    <% } %>
+    <section class="header">
+    <div class="responsiveNavWrapper">
+        <div class="hamburgerIcon">
+            <!-- <img src="./assets/menu.png" alt=""> -->
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="responsiveNav">
+            <div class="backFilter"></div>
+            <div class="responsiveNavLinksWrapper">
+                <!-- <div class="hamburgerIcon">
+                    <img src="./assets/menu.png" alt="">
+                </div> -->
+                <div class="responsiveNavTop">
+                    <div class="logo">
+                        <h3><b>GOLDORIES<b></h3>
+                    </div>
+
+                    <% if(username!=null){ %> 
+                        <p>Hello! <%=username  %> </p>
+        
+                    <% }else{ %>   
+                        <p>guest</p>
+                    <% } %> 
+               
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinks">
+                    <a id = "selected" href="/">HOME</a>
+                    <a href="/about">ABOUT</a>
+                    <a href="/addFood">ADD FOOD</a>
+                    <a href="/searchFood">SEARCH FOOD</a>
+                    <a href="/updateFood">UPDATE FOOD</a>
+                    <a href="/listFood">LIST FOOD</a>
+                    <a href="/api">API</a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinksBottom">
+                    <% if(username!=null){ %> 
+                        <a href="/logOut" class="logout">Sign out</a>
+        
+                    <% }else{ %>   
+                        <a href="/login">LOGIN</a>
+                        <a href="/register">SIGN UP</a>
+                    <% } %> 
+
+      
+                </div>
+
+            </div>   
+
+        </div>
+ 
+    </div>    
+
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDORIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+    <nav>
+        <div class="links">
+            <a id = "selected" href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="/searchFood">SEARCH FOOD</a>
+            <a href="/updateFood">UPDATE FOOD</a>
+            <a href="/listFood">LIST FOOD</a>
+            <a href="/api">API</a>
+        </div>
+
+    </nav>
+
+
+        
+        <img src="./assets/background.jpg" alt="background" class="background">
+
+        <div class="contentContainer">
+
+            <% if(username==null){ %> 
+            <div class="headerInfo">
+                <h3>Welcome to Goldories!</h3>
+                <p>A calorie counter website designed by Muneeb.</p>
+                <a href="/register" class="button">GET STARTED!</a><br>
+                <a href="/login">Already have an account? Login</a>
+
+
+            </div>
+            <% }else{ %> 
+                <div class="headerInfo">
+                    <h3>Welcome <%=username%></h3>
+                    <p>A calorie counter website designed by Muneeb.</p>
+                    <a href="/addFood" class="button">ADD FOOD!</a><br>
+                    <a href="/listFood">Show me list food page</a>
+    
+    
+                </div>
+            
+            <% } %> 
+
+        </div>
+    </section>
+    <section class="section2">
+        <div class="searchRecipes">
+            <form method="GET" action="/foodSearched">
+                <p class="title">SEARCH IT</p>
+                <p>Search for any food you want</p>
+                <input class = "search" type="text" name="name" placeholder="Search for recipes">
+            </form>
+        </div>
+
+    </section>
+
+    <section class="section3">
+        <div class="sectionWrapper">
+            <div class="infoBoxWrapper">
+                <div class="infoBox">          
+                    <a href="/addFood" class="infoButton">
+                        <img src="./assets/salad.png" alt="">
+                        <p class="infoHeader">Have food in mind you wish to add here?</p>          
+                    </a>
+
+                </div>
+                <div class="infoBox">
+                    <a href="/updateFood" class="infoButton">
+                        <img src="./assets/update.png" alt="">
+                        <p class="infoHeader">Want to edit/delete food?</p>
+                    </a>                    
+
+                </div>
+                <div class="infoBox">              
+                    <a href="/listFood" class="infoButton">
+                        <img src="./assets/files.png" alt="">
+                        <p class="infoHeader">Want to see the list of all foods?</p>      
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+    <script src="./app.js"></script>
+    <footer>
+    </footer>
+
+
+</body>
+</html>
